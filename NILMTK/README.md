@@ -1,92 +1,176 @@
-# NILMTK: Non-Intrusive Load Monitoring Toolkit
+[![Build Status](https://travis-ci.org/nilmtk/nilmtk.svg?branch=master)](https://travis-ci.org/nilmtk/nilmtk) 
 
-Non-Intrusive Load Monitoring (NILM) is the process of estimating the
-energy consumed by individual appliances given just a whole-house
-power meter reading.  In other words, it produces an (estimated)
-itemised energy bill from just a single, whole-house power meter.
+[![Coverage Status](https://coveralls.io/repos/nilmtk/nilmtk/badge.png)](https://coveralls.io/r/nilmtk/nilmtk)
+
+[![Code Health](https://landscape.io/github/nilmtk/nilmtk/master/landscape.png)](https://landscape.io/github/nilmtk/nilmtk/master)
+
+### v0.2 Released!
+
+v0.2 is a complete re-write.  Please see
+[the docs for details](http://nilmtk.github.io/nilmtk/master/index.html).
+The old v0.1 code is still available in the v0.1 branch and the [old
+docs are in v0.1.1](http://nilmtk.github.io/nilmtk/v0.1.1/index.html).
+
+
+nilmtk: Non-Intrusive Load Monitoring Toolkit
+======
+
+Non-Intrusive Load Monitoring (NILM) is the process of estimating the energy consumed by individual
+appliances given just a whole-house power meter
+reading.  In other words, it produces an (estimated) itemised
+energy bill from just a single, whole-house power meter.
 
 NILM is sometimes called:
 
 * "non-intrusive appliance load monitoring (NALM or NIALM)"
 * "[electriciy | energy | smart meter] disaggregation"
 
-NILMTK is a toolkit designed to help *researchers* evaluate the
-accuracy of NILM algorithms. **NILMTK is not yet suitable for end
-users because NILMTK is not yet capable of out-of-the-box
-disaggregation (i.e. disaggregation where you do not yet have
-submetered training data), although we hope that it might be some time
-in the future**.
+Below is an illustration<sup>1</sup> of what NILM, in general, can do.
 
-Below is an example of sub-metered appliance-level data, which NILM
-algorithms aim to produce. N.B. this is not the output of a NILMTK
-algorithm!
+<img src="https://dl.dropboxusercontent.com/u/75845627/misc/after_disagg.png" alt="Drawing" style="width: 40% height: 40%;"/>
 
-<img src="https://dl.dropboxusercontent.com/u/75845627/nilmtk/submetered.png" alt="Drawing" style="width: 40% height: 40%;"/>
+##### NILMTK Documentation
 
+http://nilmtk.github.io/nilmtk/
 
-# Why a toolkit for NILM?
+##### Academic paper on NILMTK
 
-We quote our [NILMTK paper](http://arxiv.org/pdf/1404.3878v1.pdf)
-explaining the need for a NILM toolkit:
+Batra, N., Kelly, J., Parson, O., Dutta, H., Knottenbelt, W., Rogers, A., Singh, A., Srivastava, M. (2014). NILMTK: An Open Source Toolkit for Non-intrusive Load Monitoring. In Fifth International Conference on Future Energy Systems (ACM e-Energy). Cambridge, UK. arXiv:[1404.3878](http://arxiv.org/abs/1404.3878) DOI:[10.1145/2602044.2602051](http://dx.doi.org/10.1145/2602044.2602051)
 
-  > Empirically comparing disaggregation algorithms is currently
-  > virtually impossible. This is due to the different data sets used,
-  > the lack of reference implementations of these algorithms and the
-  > variety of accuracy metrics employed.
+Bibtex:
 
+```
+@inproceedings{NILMTK,
+   title = {{NILMTK: An Open Source Toolkit for Non-intrusive Load Monitoring}},
+   year = {2014},
+   author = {Batra, Nipun and Kelly, Jack and Parson, Oliver and Dutta, Haimonti and Knottenbelt, William and Rogers, Alex  and Singh, Amarjeet and Srivastava, Mani},
+   booktitle = {Fifth International Conference on Future Energy Systems (ACM e-Energy)},
+   address = {Cambridge, UK},
+   archivePrefix = {arXiv},
+   arxivId = {1404.3878},
+   doi = {10.1145/2602044.2602051},
+   eprint = {1404.3878}
+}
+```
 
-# What NILMTK provides
+Please note that the paper was submitted back in Jan 2014 and the code
+has evolved *a lot* since then!  Please do not use the paper as a
+guide to the current API.  Instead please use the [online docs](http://nilmtk.github.io/nilmtk/master/index.html).
 
-To address this challenge, we present the Non-intrusive Load Monitoring
-Toolkit (NILMTK); an open source toolkit designed specifically to enable
-the comparison of energy disaggregation algorithms in a reproducible
-manner. This work is the first research to compare multiple
-disaggregation approaches across multiple publicly available data sets.
-NILMTK includes:
+##### Keeping up to date with NILMTK
 
--  parsers for a range of existing data sets (8 and counting)
--  a collection of preprocessing algorithms
--  a set of statistics for describing data sets
--  a number of [reference benchmark disaggregation algorithms](https://github.com/nilmtk/nilmtk/wiki/NILM-Algorithms)
--  a common set of accuracy metrics
--  and much more!
+Please sign up to the [NILMTK-Announce mailing list](https://groups.google.com/forum/#!forum/nilmtk-announce) to be kept up to speed on NILMTK.  It will be a fairly low-traffic mailing list.  We'll just announce new versions, new docs etc.
 
+[NILMTK is also on Twitter](https://twitter.com/nilmtk).
 
-# Documentation
+##### Current state of the project
 
-[NILMTK Documentation](https://github.com/nilmtk/nilmtk/tree/master/docs/manual)
+The project is in its early stages.
 
+Please note that NILMTK is currently a research tool.  It is not yet
+ready for use by end-users, although we certainly hope that NILMTK
+will be capable of doing 'plug and play' disaggregation in the future.
 
-# Publications
+Please see the docs for more info.
 
-Please see our [list of NILMTK publications](http://nilmtk.github.io/#publications).  If you use NILMTK in academic work then please consider citing our papers.
+##### Installing on Ubuntu like Linux variants (debian based)
 
-Please note that NILMTK has evolved *a lot* since these papers were published! Please use the
-[online docs](https://github.com/nilmtk/nilmtk/tree/master/docs/manual)
-as a guide to the current API.
+NB: The following procedure is for Ubuntu like Linux variants (debian based). Please adapt accordingly for your OS. We would welcome installation instructions for other OS as well.
+We would recommend using [Anaconda](https://store.continuum.io/cshop/anaconda/), which bundles togther most of the required packages.
+After installing Anaconda, please do the following:
 
+- Updating anaconda
+```bash
+conda update --yes conda
+```
 
-# Keeping up to date with NILMTK
+- Installing HDF5 libaries and python-dev
+```bash
+sudo apt-get install libhdf5-serial-dev python-dev
+```
 
-* [NILMTK-Announce mailing list](https://groups.google.com/forum/#!forum/nilmtk-announce): stay up to speed with NILMTK.  This is a low-traffic mailing list.  We'll just announce new versions, new docs etc.
-* [NILMTK on Twitter](https://twitter.com/nilmtk).
+- Installing git client
+```bash
+sudo apt-get install git
+```
 
+- Installing pip and other dependencies which might be missing from Anaconda
+```bash
+conda install --yes pip numpy scipy six scikit-learn pandas numexpr pytables dateutil matplotlib networkx
+```
 
-# History
+- Installing [NILM Metadata](https://github.com/nilmtk/nilm_metadata).
+```bash
+git clone https://github.com/nilmtk/nilm_metadata/
+cd nilm_metadata
+python setup.py develop
+cd ..
+```
+-  Installing postgresql support (currently needed for WikiEnergy converter)
+```bash
+sudo apt-get build-dep python-psycopg2
+```
 
-* April 2014: v0.1 released
-* June 2014: NILMTK presented at [ACM e-Energy](http://conferences.sigcomm.org/eenergy/2014/)
-* July 2014: v0.2 released
-* Nov 2014: NILMTK wins best demo award at [ACM BuildSys](http://www.buildsys.org/2014/)
+- Misc. pip installs
+```bash
+pip install psycopg2 nose coveralls coverage
+```
 
-For more detail, please see our [changelog](https://github.com/nilmtk/nilmtk/blob/master/docs/manual/development_guide/changelog.md).
+- Finally! Install nilmtk
+```bash
+git clone https://github.com/nilmtk/nilmtk.git
+cd nilmtk
+python setup.py develop
+cd..
+```
 
+- Run tests
+```bash
+cd nilmtk
+nosetests
+```
 
-##### Code health
+##### Installing on Windows
 
-[![Build Status](https://travis-ci.org/nilmtk/nilmtk.svg?branch=master)](https://travis-ci.org/nilmtk/nilmtk) 
+- Install [Anaconda](https://store.continuum.io/cshop/anaconda/), which bundles togther most of the required packages.
 
-[![Coverage Status](https://coveralls.io/repos/nilmtk/nilmtk/badge.png)](https://coveralls.io/r/nilmtk/nilmtk)
+- Install [git](http://git-scm.com/download/win) client
 
-[![Code Health](https://landscape.io/github/nilmtk/nilmtk/master/landscape.png)](https://landscape.io/github/nilmtk/nilmtk/master)
+- Installing pip and other dependencies which might be missing from Anaconda
+```bash
+$ conda install --yes pip numpy scipy six scikit-learn pandas numexpr pytables dateutil matplotlib networkx
+```
+
+- Installing [NILM Metadata](https://github.com/nilmtk/nilm_metadata) from git bash
+```bash
+$ git clone https://github.com/nilmtk/nilm_metadata/
+$ cd nilm_metadata
+$ python setup.py develop
+$ cd ..
+```
+
+- Misc. pip installs
+```bash
+$ pip install nose pbs coveralls coverage
+```
+
+- Finally! Install nilmtk from git bash
+```bash
+$ git clone https://github.com/nilmtk/nilmtk.git
+$ cd nilmtk
+$ python setup.py develop
+$ cd..
+```
+
+- Run tests
+```bash
+$ cd nilmtk
+$ nosetests
+```
+
+##### Notes
+
+1. The image is from the following paper and since the main author is contributing to nilmtk, so no permission issues.
+The reference is: Nipun Batra, Haimonti Dutta, Amarjeet Singh, “INDiC: Improved Non-Intrusive load monitoring using load Division and     Calibration”, to appear at the 12th International Conference on Machine Learning and Applications (ICMLA’13) will be     held in Miami, Florida, USA, December 4 – December 7, 2013 
+    [Preprint](http://nipunbatra.files.wordpress.com/2013/09/icmla.pdf).  [IPython notebook](http://www.iiitd.edu.in/~amarjeet/Research/indic.html)
 
